@@ -53,6 +53,17 @@ class WorkoutsFragment : Fragment() {
     internal fun newWorkout(){
         activity?.let { NewWorkoutDialogFragment(this).show(it.supportFragmentManager, "") }
     }
+
+    internal fun addNewWorkout(workout: Workout){
+
+        if(workouts == null){
+            workouts = listOf(workout)
+        }else{
+            workouts  = workouts!! + workout
+        }
+        binding.workoutRecycler.adapter = activity?.let { workouts?.let { it1 -> WorkoutAdapter(it1, it) } }
+        binding.workoutRecycler.adapter?.notifyDataSetChanged()
+    }
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null

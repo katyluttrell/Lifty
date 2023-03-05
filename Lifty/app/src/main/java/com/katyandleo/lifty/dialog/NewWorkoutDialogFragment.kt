@@ -22,6 +22,7 @@ import com.katyandleo.lifty.createProgram.ProgramsFragment
 import com.katyandleo.lifty.createProgram.WorkoutsFragment
 import com.katyandleo.lifty.data.Lift
 import com.katyandleo.lifty.data.Program
+import com.katyandleo.lifty.data.Workout
 
 
 class NewWorkoutDialogFragment(private val workoutsFragment: WorkoutsFragment) : DialogFragment() {
@@ -55,7 +56,7 @@ class NewWorkoutDialogFragment(private val workoutsFragment: WorkoutsFragment) :
             dialog.dismiss()
         }
         dialogView.findViewById<Button>(R.id.complete_button).setOnClickListener {
-          //  workoutsFragment.addNewProgram(createNewProgram(dialogView))
+            workoutsFragment.addNewWorkout(createNewWorkout(dialogView))
             dialog.dismiss()
         }
 
@@ -85,17 +86,14 @@ class NewWorkoutDialogFragment(private val workoutsFragment: WorkoutsFragment) :
         dialogView!!.findViewById<RecyclerView>(R.id.new_lift_recycler).adapter!!.notifyDataSetChanged()
     }
 
-    internal fun createNewWorkout(dialogView: View): Program {
+    internal fun createNewWorkout(dialogView: View): Workout {
         var title = dialogView.findViewById<TextInputLayout>(R.id.title_edit_text).editText?.editableText.toString()
-        var weeks = Integer.parseInt(dialogView.findViewById<TextInputLayout>(R.id.n_weeks_edit_text).editText?.editableText.toString())
         if(title.isNullOrEmpty()){
             title = ""
         }
-        return Program(
+        return Workout(
             title,
-            weeks,
-            0,
-            null
+            liftList
         )
     }
 }
