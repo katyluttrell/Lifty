@@ -17,7 +17,7 @@ import com.katyandleo.lifty.data.Program
 import com.katyandleo.lifty.data.Workout
 
 
-class ProgramAdapter(private val dataList: List<Program>, private val activity: FragmentActivity): RecyclerView.Adapter<ProgramAdapter.ViewHolder>(){
+class ProgramAdapter(private val dataList: List<Program>?, private val activity: FragmentActivity): RecyclerView.Adapter<ProgramAdapter.ViewHolder>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
        val view: View = LayoutInflater.from(parent.context)
@@ -26,15 +26,17 @@ class ProgramAdapter(private val dataList: List<Program>, private val activity: 
     }
 
     override fun getItemCount(): Int {
-        return dataList.size
+        return dataList?.size ?: 0
     }
 
     override fun onBindViewHolder(holder: ProgramAdapter.ViewHolder, position: Int) {
-       val data = dataList[position]
-        holder.title.text = data.name
-        holder.nDays.text = activity.getString(R.string.n_days, data.days)
-        holder.nWeeks.text = activity.getString(R.string.n_weeks, data.weeks)
-        holder.itemView.setOnClickListener { onClick(data.workouts) }
+      if(dataList != null) {
+          val data = dataList[position]
+          holder.title.text = data.name
+          holder.nDays.text = activity.getString(R.string.n_days, data.days)
+          holder.nWeeks.text = activity.getString(R.string.n_weeks, data.weeks)
+          holder.itemView.setOnClickListener { onClick(data.workouts) }
+      }
     }
 
     class ViewHolder(ItemView: View) : RecyclerView.ViewHolder(ItemView) {

@@ -1,22 +1,24 @@
 package com.katyandleo.lifty.createProgram
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.fragment.findNavController
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import com.google.gson.Gson
-import com.katyandleo.lifty.R
+import com.google.gson.reflect.TypeToken
 import com.katyandleo.lifty.adapters.ProgramAdapter
 import com.katyandleo.lifty.data.Lift
 import com.katyandleo.lifty.data.Program
 import com.katyandleo.lifty.data.Workout
 import com.katyandleo.lifty.databinding.FragmentProgramsBinding
-import com.katyandleo.lifty.dialog.LiftDialogFragment
 import com.katyandleo.lifty.dialog.NewProgramDialogFragment
+import java.lang.reflect.Type
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
@@ -28,7 +30,7 @@ class ProgramsFragment : Fragment() {
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
-    lateinit var programsList: List<Program>
+    var programsList: List<Program>? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -78,13 +80,11 @@ class ProgramsFragment : Fragment() {
         val workouts = listOf(
             Workout(
                 "A Day",
-                lifts,
-                "notes2"
+                lifts
             ),
             Workout(
                 "B Day",
-                lifts,
-                "notes5"
+                lifts
             )
         )
         programsList = listOf<Program>(Program(
@@ -98,13 +98,34 @@ class ProgramsFragment : Fragment() {
                 2,
                 workouts))
 
-        val database = FirebaseDatabase.getInstance().getReference("programs")
+//
+//        val programJson = gson.toJson(program)
+//        val programListType: Type = object : TypeToken<ArrayList<Program>?>() {}.type
+//        val programList: List<Program> = Gson().fromJson(program, programListType)
+//        val database = FirebaseDatabase.getInstance().getReference("programs")
+//
+//        database.addListenerForSingleValueEvent(object : ValueEventListener {
+//            override fun onDataChange(dataSnapshot: DataSnapshot) {
+//                val programListType: Type = object : TypeToken<ArrayList<Program>?>() {}.type
+//                val programList: List<Program> = Gson().fromJson(dataSnapshot.value.toString(), programListType)
+//
+//                binding.programRecycler.adapter = activity?.let { ProgramAdapter(programsList, it) }
+//                binding.programRecycler.adapter?.notifyDataSetChanged()
+//                // Do something with the list of Program objects
+//            }
+//
+//            override fun onCancelled(error: DatabaseError) {
+//                // Handle the error
+//            }
+//        })
+//        val programId = database.push().key
+        //val programJson = Gson().toJson(programsList)
+//        programId?.let { database.child(it).setValue(programJson) }
 
-        val programId = database.push().key
-        val programJson = Gson().toJson(programsList)
-        programId?.let { database.child(it).setValue(programJson) }
         binding.programRecycler.layoutManager = LinearLayoutManager(activity)
-        binding.programRecycler.adapter = activity?.let { ProgramAdapter(programsList, it) }
+        if(programsList != null) {
+            binding.programRecycler.adapter = activity?.let { ProgramAdapter(programsList, it) }
+        }
         binding.newProgramFab.setOnClickListener{newProgram()}
 
 //        binding.buttonFirst.setOnClickListener {
@@ -117,9 +138,13 @@ class ProgramsFragment : Fragment() {
     }
 
     internal fun addNewProgram(program: Program){
-        programsList = programsList + program
+        programsList = if(programsList == null){
+            listOf(program)
+        } else {
+            programsList!! + program
+        }
         binding.programRecycler.adapter = activity?.let { ProgramAdapter(programsList, it) }
-        binding.programRecycler.adapter?.notifyItemInserted(programsList.size-1)
+        binding.programRecycler.adapter?.notifyItemInserted(programsList!!.size-1)
     }
 
     override fun onDestroyView() {

@@ -5,4 +5,4 @@ data class Program(
     val weeks: Int,
     val days: Int,
     val workouts: List<Workout>?
-)
+): java.io.Serializable

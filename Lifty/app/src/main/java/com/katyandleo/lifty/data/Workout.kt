@@ -7,13 +7,11 @@ import android.os.Parcelable
 
 data class Workout(
     val name: String,
-    val lifts: List<Lift>?,
-    val notes: String?
+    val lifts: List<Lift>?
 ): Parcelable {
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeString(name)
         parcel.writeTypedList(lifts)
-        parcel.writeString(notes)
     }
 
     override fun describeContents(): Int {
@@ -24,8 +22,7 @@ data class Workout(
         override fun createFromParcel(parcel: Parcel): Workout {
             return Workout(
                 parcel.readString()!!,
-                parcel.createTypedArrayList(Lift),
-                parcel.readString()
+                parcel.createTypedArrayList(Lift)
             )
         }
 
