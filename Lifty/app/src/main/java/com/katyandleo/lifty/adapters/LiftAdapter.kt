@@ -32,20 +32,25 @@ class LiftAdapter(private val dataList: List<Lift>, private val activity: Fragme
 
     override fun onBindViewHolder(holder: LiftAdapter.ViewHolder, position: Int) {
        val data = dataList[position]
-        holder.title.text = data.name
-        holder.sets.text = Html.fromHtml("<b>" +activity.getText(R.string.sets_d) + "</b>" + data.sets.toString())
-        holder.reps.text = Html.fromHtml("<b>" +activity.getText(R.string.reps) + "</b>" + data.reps.toString())
-        holder.itemView.setOnClickListener { onClick() }
+        holder.titleCheck.text = data.name
+        holder.titleCheck.isChecked = data.isDone
+        holder.sets.text = Html.fromHtml("<b>" +activity.getText(R.string.sets_d) + "</b> " +  data.sets.toString())
+        holder.reps.text = Html.fromHtml("<b>" +activity.getText(R.string.reps) + "</b> " + data.reps.toString())
+        holder.RPE.text = Html.fromHtml("<b>" +activity.getText(R.string.rpe_d) + "</b> " + data.rpe.toString())
+        holder.itemView.setOnClickListener { onClick(holder, data) }
     }
 
     class ViewHolder(ItemView: View) : RecyclerView.ViewHolder(ItemView) {
-        val title: CheckBox = ItemView.findViewById(R.id.checkBox)
+        val titleCheck: CheckBox = ItemView.findViewById(R.id.checkBox)
         val sets: TextView = ItemView.findViewById(R.id.sets)
         val reps: TextView = ItemView.findViewById(R.id.reps)
+        val RPE: TextView = ItemView.findViewById(R.id.RPE)
     }
 
-    fun onClick(){
+    fun onClick(holder: ViewHolder, data: Lift){
         //show expanded view dialog
+        holder.titleCheck.isChecked = true
+        //data.isDone = true
     }
 
 

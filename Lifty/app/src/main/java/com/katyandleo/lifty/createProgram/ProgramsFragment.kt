@@ -48,6 +48,26 @@ class ProgramsFragment : Fragment() {
                 null,
                 null,
                 "notes"
+            ),
+            Lift(
+                "Bench",
+                5,
+                4,
+                6,
+                135F,
+                null,
+                null,
+                "notes"
+            ),
+            Lift(
+                "Deadlift",
+                5,
+                4,
+                6,
+                135F,
+                null,
+                null,
+                "notes"
             )
         )
         val workouts = listOf(
@@ -55,6 +75,11 @@ class ProgramsFragment : Fragment() {
                 "A Day",
                 lifts,
                 "notes2"
+            ),
+            Workout(
+                "B Day",
+                lifts,
+                "notes5"
             )
         )
         val programs = listOf<Program>(Program(
