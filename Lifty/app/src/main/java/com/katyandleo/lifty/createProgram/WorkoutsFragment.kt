@@ -12,6 +12,8 @@ import com.katyandleo.lifty.adapters.LiftAdapter
 import com.katyandleo.lifty.adapters.WorkoutAdapter
 import com.katyandleo.lifty.data.Workout
 import com.katyandleo.lifty.databinding.FragmentWorkoutsBinding
+import com.katyandleo.lifty.dialog.NewProgramDialogFragment
+import com.katyandleo.lifty.dialog.NewWorkoutDialogFragment
 
 /**
  * A simple [Fragment] subclass as the second destination in the navigation.
@@ -40,12 +42,17 @@ class WorkoutsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.workoutRecycler.layoutManager = LinearLayoutManager(activity)
         binding.workoutRecycler.adapter = activity?.let { workouts?.let { it1 -> WorkoutAdapter(it1, it) } }
-
+        binding.newWoroutFab.setOnClickListener {
+            newWorkout()
+        }
  //       binding.buttonSecond.setOnClickListener {
 //            findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
 //        }
     }
 
+    internal fun newWorkout(){
+        activity?.let { NewWorkoutDialogFragment(this).show(it.supportFragmentManager, "") }
+    }
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
