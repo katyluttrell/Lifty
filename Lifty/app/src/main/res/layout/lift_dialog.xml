@@ -7,7 +7,7 @@
     android:layout_height="wrap_content"
     app:cardElevation="6dp"
     app:cardCornerRadius="15dp"
-    android:backgroundTint="@color/orange_dark"
+    android:backgroundTint="@color/orange_light"
     android:clickable="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -25,6 +25,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
         <TextView
             android:id="@+id/sets_planned"
             android:layout_width="wrap_content"
@@ -32,10 +33,11 @@
             android:layout_marginStart="28dp"
             android:layout_marginTop="16dp"
             android:text="Sets: "
-            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display3"
             android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/lift_title" />
+
         <TextView
             android:id="@+id/reps_planned"
             android:layout_width="wrap_content"
@@ -43,7 +45,7 @@
             android:layout_marginStart="28dp"
             android:layout_marginTop="16dp"
             android:text="Reps: "
-            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display3"
             android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/sets_planned" />
@@ -55,7 +57,7 @@
             android:layout_marginStart="28dp"
             android:layout_marginTop="16dp"
             android:text="@string/weight"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display3"
             android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/reps_planned" />
@@ -64,10 +66,9 @@
             android:id="@+id/weight_actual"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
             android:layout_marginTop="16dp"
             android:text="@string/actual_weight"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display3"
             android:textSize="16sp"
             app:layout_constraintEnd_toStartOf="@id/editTextWeightActual"
             app:layout_constraintTop_toBottomOf="@+id/reps_planned" />
@@ -82,7 +83,7 @@
             android:inputType="number|numberDecimal"
             android:maxLength="5"
             android:textAllCaps="true"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display3"
             android:textColor="@color/black"
             android:textColorHighlight="@color/black"
             android:textColorLink="@color/black"
@@ -91,6 +92,7 @@
             app:layout_constraintBaseline_toBaselineOf="@id/weight_actual"
             app:layout_constraintEnd_toEndOf="parent"
             tools:text="555.5" />
+
         <TextView
             android:id="@+id/RPE_planned"
             android:layout_width="wrap_content"
@@ -98,7 +100,7 @@
             android:layout_marginStart="32dp"
             android:layout_marginTop="16dp"
             android:text="@string/rpe_d"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display3"
             android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/weight_planned" />
@@ -109,7 +111,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:text="@string/actual_rpe"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display3"
             android:textSize="16sp"
             app:layout_constraintStart_toStartOf="@id/weight_actual"
             app:layout_constraintTop_toBottomOf="@+id/weight_actual" />
@@ -126,22 +128,24 @@
             android:textSize="16sp"
             app:layout_constraintBaseline_toBaselineOf="@id/RPE_actual"
             app:layout_constraintStart_toStartOf="@id/editTextWeightActual" />
+
         <TextView
             android:id="@+id/notes_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:text="@string/notes"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display3"
             android:textSize="16sp"
             app:layout_constraintStart_toStartOf="@id/RPE_planned"
             app:layout_constraintTop_toBottomOf="@+id/RPE_planned" />
+
         <TextView
             android:id="@+id/notes_body"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="1dp"
             android:layout_marginStart="10dp"
+            android:layout_marginTop="1dp"
             android:text="note note note"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2"
             android:textSize="16sp"
@@ -153,9 +157,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
+            android:layout_marginStart="28dp"
             android:text="Close"
             android:textColor="@color/black"
-            app:layout_constraintStart_toStartOf="@id/RPE_planned"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/notes_body"
             style="@style/Widget.MaterialComponents.Button.TextButton"/>
         <Button

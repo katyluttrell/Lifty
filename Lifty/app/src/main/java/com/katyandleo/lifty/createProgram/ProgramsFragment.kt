@@ -28,6 +28,7 @@ class ProgramsFragment : Fragment() {
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
+    lateinit var programsList: List<Program>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -86,26 +87,24 @@ class ProgramsFragment : Fragment() {
                 "notes5"
             )
         )
-        val programs = listOf<Program>(Program(
+        programsList = listOf<Program>(Program(
             "Test Program",
             10,
             2,
-            workouts,
-            "notes3"),
+            workouts),
             Program(
                 "Test Program 2",
                 10,
                 2,
-                workouts,
-                "notes3"))
+                workouts))
 
         val database = FirebaseDatabase.getInstance().getReference("programs")
 
         val programId = database.push().key
-        val programJson = Gson().toJson(programs)
+        val programJson = Gson().toJson(programsList)
         programId?.let { database.child(it).setValue(programJson) }
         binding.programRecycler.layoutManager = LinearLayoutManager(activity)
-        binding.programRecycler.adapter = activity?.let { ProgramAdapter(programs, it) }
+        binding.programRecycler.adapter = activity?.let { ProgramAdapter(programsList, it) }
         binding.newProgramFab.setOnClickListener{newProgram()}
 
 //        binding.buttonFirst.setOnClickListener {
@@ -114,7 +113,13 @@ class ProgramsFragment : Fragment() {
     }
 
     internal fun newProgram(){
-        activity?.let { NewProgramDialogFragment(binding.root).show(it.supportFragmentManager, "") }
+        activity?.let { NewProgramDialogFragment(this).show(it.supportFragmentManager, "") }
+    }
+
+    internal fun addNewProgram(program: Program){
+        programsList = programsList + program
+        binding.programRecycler.adapter = activity?.let { ProgramAdapter(programsList, it) }
+        binding.programRecycler.adapter?.notifyItemInserted(programsList.size-1)
     }
 
     override fun onDestroyView() {
