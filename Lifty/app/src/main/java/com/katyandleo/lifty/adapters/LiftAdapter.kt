@@ -50,7 +50,7 @@ class LiftAdapter(private val dataList: List<Lift>, private val activity: Fragme
 
     fun onClick(holder: ViewHolder, data: Lift){
         //show expanded view dialog
-        LiftDialogFragment(data).show(activity.supportFragmentManager, "")
+        LiftDialogFragment(data, holder.itemView).show(activity.supportFragmentManager, "")
     }
 
 
