@@ -24,13 +24,13 @@ class WorkoutsFragment : Fragment() {
     // This property is only valid between onCreateView and
     // onDestroyView.s
     private val binding get() = _binding!!
-    lateinit var workouts: List<Workout>
+    var workouts: List<Workout>? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-         workouts = arguments?.getParcelableArray("workoutsList")?.toList() as List<Workout>
+         workouts = arguments?.getParcelableArray("workoutsList")?.toList() as List<Workout>?
         _binding = FragmentWorkoutsBinding.inflate(inflater, container, false)
         return binding.root
 
@@ -39,7 +39,7 @@ class WorkoutsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.workoutRecycler.layoutManager = LinearLayoutManager(activity)
-        binding.workoutRecycler.adapter = activity?.let { WorkoutAdapter(workouts, it) }
+        binding.workoutRecycler.adapter = activity?.let { workouts?.let { it1 -> WorkoutAdapter(it1, it) } }
 
  //       binding.buttonSecond.setOnClickListener {
 //            findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
