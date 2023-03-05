@@ -15,6 +15,8 @@ import com.katyandleo.lifty.data.Lift
 import com.katyandleo.lifty.data.Program
 import com.katyandleo.lifty.data.Workout
 import com.katyandleo.lifty.databinding.FragmentProgramsBinding
+import com.katyandleo.lifty.dialog.LiftDialogFragment
+import com.katyandleo.lifty.dialog.NewProgramDialogFragment
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
@@ -104,10 +106,15 @@ class ProgramsFragment : Fragment() {
         programId?.let { database.child(it).setValue(programJson) }
         binding.programRecycler.layoutManager = LinearLayoutManager(activity)
         binding.programRecycler.adapter = activity?.let { ProgramAdapter(programs, it) }
+        binding.newProgramFab.setOnClickListener{newProgram()}
 
 //        binding.buttonFirst.setOnClickListener {
 //            findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
 //        }
+    }
+
+    internal fun newProgram(){
+        activity?.let { NewProgramDialogFragment(binding.root).show(it.supportFragmentManager, "") }
     }
 
     override fun onDestroyView() {

@@ -19,5 +19,6 @@
     <string name="actual_weight">Actual Weight:</string>
     <string name="weight">Weight:</string>
     <string name="notes">Notes:</string>
+    <string name="program_name">Program Name</string>
 
 </resources>
