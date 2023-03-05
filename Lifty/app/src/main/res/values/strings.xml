@@ -14,5 +14,9 @@
     <string name="sets_d">Sets: </string>
     <string name="reps">Reps: </string>
     <string name="rpe_d">RPE: </string>
+    <string name="rpe_actual">Actual RPE: </string>
+    <string name="actual_rpe">Actual RPE:</string>
+    <string name="actual_weight">Actual Weight:</string>
+    <string name="weight">Weight:</string>
 
 </resources>

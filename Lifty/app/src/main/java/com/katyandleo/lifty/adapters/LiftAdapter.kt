@@ -16,6 +16,7 @@ import com.katyandleo.lifty.R
 import com.katyandleo.lifty.createProgram.WorkoutsFragment
 import com.katyandleo.lifty.data.Lift
 import com.katyandleo.lifty.data.Program
+import com.katyandleo.lifty.dialog.LiftDialogFragment
 
 
 class LiftAdapter(private val dataList: List<Lift>, private val activity: FragmentActivity): RecyclerView.Adapter<LiftAdapter.ViewHolder>(){
@@ -49,8 +50,7 @@ class LiftAdapter(private val dataList: List<Lift>, private val activity: Fragme
 
     fun onClick(holder: ViewHolder, data: Lift){
         //show expanded view dialog
-        holder.titleCheck.isChecked = true
-        //data.isDone = true
+        LiftDialogFragment(data).show(activity.supportFragmentManager, "")
     }
 
 
