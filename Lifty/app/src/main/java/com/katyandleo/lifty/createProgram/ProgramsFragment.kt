@@ -6,7 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.katyandleo.lifty.R
+import com.katyandleo.lifty.adapters.ProgramAdapter
+import com.katyandleo.lifty.data.Lift
+import com.katyandleo.lifty.data.Program
+import com.katyandleo.lifty.data.Workout
 import com.katyandleo.lifty.databinding.FragmentProgramsBinding
 
 /**
@@ -32,6 +37,34 @@ class ProgramsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.programRecycler.layoutManager = LinearLayoutManager(activity)
+        val lifts =  listOf(
+            Lift(
+                "Squat",
+                5,
+                4,
+                6,
+                135F,
+                null,
+                null,
+                "notes"
+            )
+        )
+        val workouts = listOf(
+            Workout(
+                lifts,
+                "notes2"
+            )
+        )
+        val programs = listOf<Program>(Program(
+            "Test Program",
+            10,
+            2,
+            workouts,
+            "notes3"))
+
+        binding.programRecycler.layoutManager = LinearLayoutManager(activity)
+        binding.programRecycler.adapter = context?.let { ProgramAdapter(programs, it) }
 
 //        binding.buttonFirst.setOnClickListener {
 //            findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
