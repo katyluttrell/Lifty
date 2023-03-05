@@ -29,7 +29,7 @@ class LiftDialogFragment(private val lift: Lift) : DialogFragment() {
         dialog.setContentView(view)
         val window = dialog.window
         val params = window?.attributes
-        params?.width = (context?.resources?.displayMetrics?.widthPixels?.times(0.85))!!.toInt()
+        params?.width = (context?.resources?.displayMetrics?.widthPixels?.times(0.9))!!.toInt()
         window?.attributes = params
         dialog.create()
         dialog.show()
