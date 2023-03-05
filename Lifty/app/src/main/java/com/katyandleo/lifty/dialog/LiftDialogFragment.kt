@@ -37,9 +37,13 @@ class LiftDialogFragment(private val lift: Lift) : DialogFragment() {
     }
 
     internal fun customizeView(view: View, lift: Lift){
+        view.findViewById<TextView>(R.id.sets_planned).text = context?.getString(R.string.sets_d) + " " + lift.sets
+        view.findViewById<TextView>(R.id.reps_planned).text = context?.getString(R.string.reps) + " " + lift.reps
+        view.findViewById<TextView>(R.id.weight_planned).text = context?.getString(R.string.weight) + " " + lift.weight + " lbs"
+        view.findViewById<TextView>(R.id.editTextWeightActual).text = lift.weight.toString()
+        view.findViewById<TextView>(R.id.editTextRPEActual).text = lift.rpe.toString()
         view.findViewById<TextView>(R.id.lift_title).text = lift.name
+        view.findViewById<TextView>(R.id.notes_body).text = lift.notes
         view.findViewById<TextView>(R.id.RPE_planned).text = context?.getString(R.string.rpe_d) + " " + lift.reps.toString()
-        view.findViewById<TextView>(R.id.RPE_actual).text = context?.getString(R.string.actual_rpe)
-
     }
 }
