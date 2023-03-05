@@ -14,7 +14,7 @@
         <activity
             android:name=".createProgram.ProgramActivity"
             android:exported="true"
-            android:label="@string/title_activity_create_program"
+            android:label="Lifty"
             android:theme="@style/Theme.Lifty.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
