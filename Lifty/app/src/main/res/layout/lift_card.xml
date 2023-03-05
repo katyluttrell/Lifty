@@ -8,7 +8,7 @@
     android:layout_margin="10dp"
     app:cardElevation="6dp"
     app:cardCornerRadius="15dp"
-    android:backgroundTint="@color/green_light"
+    android:backgroundTint="@color/orange_light"
     android:clickable="true">
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -19,8 +19,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:text="Title"
+            android:buttonTint="@color/orange_dark"
             android:padding="8dp"
+            android:text="Title"
+            android:textColorLink="@color/orange_dark"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
