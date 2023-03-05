@@ -7,6 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.firebase.database.FirebaseDatabase
+import com.google.gson.Gson
 import com.katyandleo.lifty.R
 import com.katyandleo.lifty.adapters.ProgramAdapter
 import com.katyandleo.lifty.data.Lift
@@ -95,6 +97,11 @@ class ProgramsFragment : Fragment() {
                 workouts,
                 "notes3"))
 
+        val database = FirebaseDatabase.getInstance().getReference("programs")
+
+        val programId = database.push().key
+        val programJson = Gson().toJson(programs)
+        programId?.let { database.child(it).setValue(programJson) }
         binding.programRecycler.layoutManager = LinearLayoutManager(activity)
         binding.programRecycler.adapter = activity?.let { ProgramAdapter(programs, it) }
 

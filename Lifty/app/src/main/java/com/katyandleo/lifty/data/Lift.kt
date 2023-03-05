@@ -9,10 +9,10 @@ data class Lift(
     val sets: Int,
     val rpe: Int,
     val weight: Float,
-    val actualRpe: Int?,
-    val actualWeight: Float?,
+    var actualRpe: Int?,
+    var actualWeight: Float?,
     val notes: String? = null,
-    val isDone: Boolean = false
+    var isDone: Boolean = false
 ): Parcelable {
     override fun describeContents(): Int {
         return 0
