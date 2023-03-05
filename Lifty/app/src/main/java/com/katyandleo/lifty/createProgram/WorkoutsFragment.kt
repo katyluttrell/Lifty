@@ -7,18 +7,18 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.katyandleo.lifty.R
-import com.katyandleo.lifty.databinding.FragmentSecondBinding
+import com.katyandleo.lifty.databinding.FragmentWorkoutsBinding
 
 /**
  * A simple [Fragment] subclass as the second destination in the navigation.
  */
-class SecondFragment : Fragment() {
+class WorkoutsFragment : Fragment() {
 
-    private var _binding: FragmentSecondBinding? = null
+    private var _binding: FragmentWorkoutsBinding? = null
 
 
     // This property is only valid between onCreateView and
-    // onDestroyView.
+    // onDestroyView.s
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -26,7 +26,7 @@ class SecondFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        _binding = FragmentSecondBinding.inflate(inflater, container, false)
+        _binding = FragmentWorkoutsBinding.inflate(inflater, container, false)
         return binding.root
 
     }

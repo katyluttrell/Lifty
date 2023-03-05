@@ -64,7 +64,7 @@ class ProgramsFragment : Fragment() {
             "notes3"))
 
         binding.programRecycler.layoutManager = LinearLayoutManager(activity)
-        binding.programRecycler.adapter = context?.let { ProgramAdapter(programs, it) }
+        binding.programRecycler.adapter = activity?.let { ProgramAdapter(programs, it) }
 
 //        binding.buttonFirst.setOnClickListener {
 //            findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
