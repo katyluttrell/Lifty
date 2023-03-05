@@ -11,4 +11,8 @@
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="n_days">X %d</string>
     <string name="n_weeks">%d Weeks</string>
+    <string name="sets_d">Sets: </string>
+    <string name="reps">Reps: </string>
+    <string name="rpe_d">RPE: </string>
+
 </resources>

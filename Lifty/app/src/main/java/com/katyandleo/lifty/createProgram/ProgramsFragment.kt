@@ -52,6 +52,7 @@ class ProgramsFragment : Fragment() {
         )
         val workouts = listOf(
             Workout(
+                "A Day",
                 lifts,
                 "notes2"
             )
@@ -61,7 +62,13 @@ class ProgramsFragment : Fragment() {
             10,
             2,
             workouts,
-            "notes3"))
+            "notes3"),
+            Program(
+                "Test Program 2",
+                10,
+                2,
+                workouts,
+                "notes3"))
 
         binding.programRecycler.layoutManager = LinearLayoutManager(activity)
         binding.programRecycler.adapter = activity?.let { ProgramAdapter(programs, it) }
