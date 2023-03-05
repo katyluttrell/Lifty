@@ -49,51 +49,83 @@ class ProgramsFragment : Fragment() {
             Lift(
                 "Squat",
                 5,
-                4,
+                3,
                 6,
-                135F,
+                120F,
                 null,
                 null,
-                "notes"
+                ""
             ),
             Lift(
                 "Bench",
-                5,
-                4,
+                10,
+                3,
                 6,
-                135F,
+                55F,
                 null,
                 null,
-                "notes"
+                ""
             ),
+            Lift(
+                "Leg Press",
+                10,
+                3,
+                6,
+                150F,
+                null,
+                null,
+                ""
+            )
+        )
+        val lifts2 =  listOf(
             Lift(
                 "Deadlift",
                 5,
-                4,
+                3,
                 6,
-                135F,
+                180F,
                 null,
                 null,
-                "notes"
+                "Pay attention to your form!"
+            ),
+            Lift(
+                "Face Pull",
+                10,
+                3,
+                6,
+                55F,
+                null,
+                null,
+                ""
+            ),
+            Lift(
+                "Leg Curl",
+                10,
+                3,
+                6,
+                50F,
+                null,
+                null,
+                ""
             )
         )
         val workouts = listOf(
             Workout(
-                "A Day",
+                "Day 1",
                 lifts
             ),
             Workout(
-                "B Day",
-                lifts
+                "Day 2",
+                lifts2
             )
         )
         programsList = listOf<Program>(Program(
-            "Test Program",
+            "Katy's Program",
             10,
             2,
             workouts),
             Program(
-                "Test Program 2",
+                "Test Program",
                 10,
                 2,
                 workouts))
