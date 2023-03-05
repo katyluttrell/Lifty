@@ -44,7 +44,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/lift_recycler"
+            android:id="@+id/new_lift_recycler"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="1dp"
@@ -66,7 +66,7 @@
             app:backgroundTint="@color/orange_dark"
             app:layout_constraintBottom_toTopOf="@id/close_button"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/lift_recycler" />
+            app:layout_constraintTop_toBottomOf="@id/new_lift_recycler" />
 
 
 
